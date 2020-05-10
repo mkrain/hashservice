@@ -24,7 +24,7 @@ This repo contains the Go code that implements a hashing service
 #### POST /hash?password=mypassword
 
 This returns immediately with a "requestId" that can be used in the GET endpoint to retrieve the
-actual hashed value, which is hashed using the SHA-512 alogrithm and base64 encoded before returning.  The actual hashing is queue and processed at a later time, currently set to 5 seconds from the original request.
+actual hashed value, which is hashed using the SHA-512 alogrithm and base64 encoded before returning.  The actual hashing is queued and processed at a later time, currently set to 5 seconds from the original request.
 
 #### GET /hash/{{requestId}}
 
