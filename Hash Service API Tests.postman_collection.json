@@ -1,0 +1,103 @@
+{
+	"info": {
+		"_postman_id": "34bc2182-68ea-4ee1-8b24-154fdf5355c5",
+		"name": "Hash Service API Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/hash?password={{password}}",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "c38cb103-1bb1-448c-8651-621a6a7c6941",
+						"exec": [
+							"let password = pm.variables.replaceIn(\"{{$randomAlphaNumeric}}\")",
+							"pm.globals.set(\"password\", password)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/hash?password={{password}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"hash"
+					],
+					"query": [
+						{
+							"key": "password",
+							"value": "{{password}}"
+						}
+					]
+				},
+				"description": "jumpcloud go test api"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/hash/{{requestId}}",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "005f8110-70ce-4d5b-b1f8-73f39dc5d45c",
+						"exec": [
+							"let requestId = pm.variables.replaceIn(\"{{$randomInt}}\")",
+							"pm.globals.set(\"requestId\", requestId)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/hash/{{requestId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"hash",
+						"{{requestId}}"
+					]
+				},
+				"description": "Get Hash By Id"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/stats",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/stats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"stats"
+					]
+				},
+				"description": "Get Current Stats"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
